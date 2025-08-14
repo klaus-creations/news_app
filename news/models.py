@@ -7,7 +7,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 
 class NewsArticle(Page):
-    title = models.CharField(max_length=255)  # Overrides Page.title
+    title = models.CharField(max_length=255)  
     publication_date = models.DateField()
     summary = models.TextField(max_length=200)
     source_url = models.URLField()
