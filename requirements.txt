@@ -1,6 +1,6 @@
 anyascii==0.3.3
 asgiref==3.9.1
-beautifulsoup4==4.12.2
+beautifulsoup4==4.13.4
 certifi==2025.8.3
 charset-normalizer==3.4.3
 defusedxml==0.7.1
@@ -22,10 +22,13 @@ laces==0.1.2
 openpyxl==3.1.5
 pillow==11.3.0
 pillow_heif==1.1.0
+requests==2.32.4
+soupsieve==2.7
+sqlparse==0.5.3
+telepath==0.3.1
 psycopg==3.2.9
 psycopg-binary==3.2.9
 python-dotenv==1.1.1
-requests==2.31.0
 soupsieve==2.7
 sqlparse==0.5.3
 telepath==0.3.1
