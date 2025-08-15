@@ -86,20 +86,14 @@ class NewsScraper:
         return all_articles
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="News Scraper with pagination & filters")
-    parser.add_argument("--pages", type=int, default=1, help="Number of pages to scrape")
-    parser.add_argument("--limit", type=int, default=10, help="Articles per page")
-    parser.add_argument("--keyword", type=str, help="Filter by keyword in title")
-    parser.add_argument("--category", type=str, help="News category (depends on site)")
-    args = parser.parse_args()
 
+def main(pages=1, limit=10, keyword=None, category=None):
     scraper = NewsScraper("https://news.ycombinator.com/")
     articles = scraper.scrape_paginated(
-        pages=args.pages,
-        limit_per_page=args.limit,
-        keyword=args.keyword,
-        category=args.category
+        pages=pages,
+        limit_per_page=limit,
+        keyword=keyword,
+        category=category
     )
 
     logger.info(f"Scraped {len(articles)} articles")
@@ -108,3 +102,15 @@ if __name__ == "__main__":
         print(f"   Summary: {art['summary']}")
         print(f"   URL: {art['source_url']}\n")
 
+    return articles  # important for Django to use the data
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="News Scraper with pagination & filters")
+    parser.add_argument("--pages", type=int, default=1, help="Number of pages to scrape")
+    parser.add_argument("--limit", type=int, default=10, help="Articles per page")
+    parser.add_argument("--keyword", type=str, help="Filter by keyword in title")
+    parser.add_argument("--category", type=str, help="News category (depends on site)")
+    args = parser.parse_args()
+
+    main(pages=args.pages, limit=args.limit, keyword=args.keyword, category=args.category)
